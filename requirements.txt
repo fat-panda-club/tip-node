@@ -1,0 +1,3 @@
+requests
+bitcoinrpc
+discord
