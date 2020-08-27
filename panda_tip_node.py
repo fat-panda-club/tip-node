@@ -129,9 +129,6 @@ async def on_ready():
         panda_audit_channel = client.get_channel(PANDA_AUDIT_CHANNEL)
         project_audit_channel = client.get_channel(response.json()['private_audit_channel'])
 
-        print("checking response")
-        print(response.json())
-
         for op in address_ops:
             new_address = connection.getnewaddress()
             address_message = "Generated new address `%s` for user %s from %s" % (new_address, op['requested_by'], op['platform'])
