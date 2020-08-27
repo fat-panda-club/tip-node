@@ -87,6 +87,8 @@ If you'd like assistance with setting up please [contact us via Discord](https:/
 ## Disclaimer
 
 Ensure your project is properly set up with an available audit channel on Discord that both your bot user and panda-bot can access.
+
 All blockchain transactions are recorded and validated from both project and panda-bot side to avoid potential tampering. Message editing or deletion is recorded by additonal tooling in the Fat Panda Club channel.
-The code provided here have been tested and fully functional as long as the tip node is in sync, it will the be project team's responsibility to ensure the node is maintained and the log (~/panda_tip_node.log) reviewed regularly for anomalies.
+
+The code provided here have been tested and is fully functional as long as the tip node is in sync, it will the be project team's responsibility to ensure the node is maintained and the log (~/panda_tip_node.log) reviewed regularly for anomalies.
 
