@@ -32,6 +32,14 @@ Instructions are taken from https://discordpy.readthedocs.io/en/latest/discord.h
 
 Run $tipnode command in DM or any channel with panda-bot present, you will need to provide the Bot user CLIENT_ID
 
+## For Discord: invite panda-bot to your server and create an audit channel
+
+Use this link to invite panda-bot https://discordapp.com/oauth2/authorize?client_id=479147589363826688&scope=bot&permissions=85057 to your Discord server
+
+Create a text channel for audit purposes, this channel should ideally be only visibile to the project team. panda-bot will require send_message and read_message permissions
+
+Take note of the channel ID to use in the next step
+
 
 ## Git clone and update script
 
@@ -49,6 +57,7 @@ Insert values as follows:
 | ------------- | ------------- |
 | BOT_TOKEN | The token you have retrieved in the first step
 | CURRENCY_TICKER  | The ticker of your currency registered on panda-bot  |
+| PROJECT_AUDIT_CHANNEL | This is the numeric audit channel ID created in the project Discord server |
 | FAT_PANDA_CLUB_API_KEY  | panda-bot API key which you can obtain with $tipnode  |
 | TIP_NODE_HOST | IP of the live node |
 | TIP_NODE_PORT | Port number of the live node |
