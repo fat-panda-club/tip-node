@@ -48,11 +48,17 @@ async def on_ready():
 
     # On failure check VPS is able to access target node and RPC credentials are correct
     connection = AuthServiceProxy("http://%s:%s@%s:%s" % \
-        ( TIP_NODE_RPC_USERNAME, TIP_NODE_RPC_PASSWORD, TIP_NODE_HOST, TIP_NODE_PORT) )
+        ( TIP_NODE_RPC_USERNAME, TIP_NODE_RPC_PASSWORD, TIP_NODE_HOST, TIP_NODE_PORT) , timeout=10)
 
     # Customize based on individual daemon
-    current_balance = connection.getbalance()
-    recent_transactions = connection.listtransactions("*", 100, 0)
+    try:
+        current_balance = connection.getbalance()
+        recent_transactions = connection.listtransactions("*", 100, 0)
+    except Exception as exception:
+        print("Could not connect to daemon: %s" % exception)
+        await client.close()
+        sys.exit(exception)
+
     transactions_to_submit = {}
     api_submission = False
     api_request = False
