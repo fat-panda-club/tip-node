@@ -12,7 +12,7 @@ import sys
 BOT_TOKEN = ""
 ### Channels are currently Discord based
 # This is the panda-bot audit channel for logging all transactions
-PANDA_AUDIT_CHANNEL = 745490315988959342
+PANDA_AUDIT_CHANNEL = 0
 # This is the project audit channel, only used on error
 PROJECT_AUDIT_CHANNEL = 0
 # This is the currency which you received API key for
