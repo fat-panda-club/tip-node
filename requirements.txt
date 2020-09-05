@@ -1,3 +1,3 @@
 requests
-bitcoinrpc
+python-bitcoinrpc
 discord
