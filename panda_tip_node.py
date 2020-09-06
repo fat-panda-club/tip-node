@@ -86,9 +86,9 @@ async def on_ready():
         transactions_to_submit[tx['txid']] = {
                 'conflicts': flag_conflicts,
                 'address': tx['address'],
-                'amount': tx['amount'],
-                'vout': vout,
-                'time': tx['time'] # Use 'timereceived' or 'blocktime' if 'time' not available
+                'amount': float(tx['amount']),
+                'vout': int(vout),
+                'time': int(tx['time']) # Use 'timereceived' or 'blocktime' if 'time' not available
             } 
 
     # Submit deposits to panda-bot
@@ -98,7 +98,7 @@ async def on_ready():
         "op": "deposit",
         "transactions": transactions_to_submit,
         "timestamp": int(time.time()),
-        'balance': current_balance,
+        'balance': float(current_balance),
     }
     response = requests.request("POST", url, headers=headers, json=payload)
     if response.status_code == 200:
