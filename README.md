@@ -2,7 +2,7 @@
 
 Requires python3.7+
 
-## Create a bot user to communicate with panda-bot
+## Create a audit bot user to communicate with panda-bot
 
 ```
 Creating a Bot account is a pretty straightforward process.
@@ -39,6 +39,8 @@ Run $tipnode command in DM or any channel with panda-bot present, you will need 
 Use this link to invite panda-bot https://discordapp.com/oauth2/authorize?client_id=479147589363826688&scope=bot&permissions=85057 to your Discord server
 
 Create a text channel for audit purposes, this channel should ideally be only visibile to the project team. panda-bot will require send_message and read_message permissions
+
+The audit bot user you created in the first step of this documentation will also require the same access as panda-bot
 
 Take note of the channel ID to use in the next step
 
