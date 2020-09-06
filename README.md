@@ -21,6 +21,8 @@ Click “Yes, do it!” to continue.
 
 Note down the Bot Token by clicking the "Copy" button. (Never share this)
 
+You are free to edit the name or logo for your project.
+
 Invite the bot to your server by using this link, replace <CLIENT_ID> with what you recorded earlier:
 https://discordapp.com/oauth2/authorize?client_id=<CLIENT_ID>&scope=bot&permissions=0
 
