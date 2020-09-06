@@ -13,7 +13,7 @@ Navigate to the [application page](https://discord.com/developers/applications)
 
 Click on the “New Application” button.
 
-Give the application a name and click “Create”. Note down the Client ID.
+Give the application a name (something simple like your currency name or your-currency-name-audit) and click “Create”. Note down the Client ID.
 
 Create a Bot User by navigating to the “Bot” tab and clicking “Add Bot”.
 
