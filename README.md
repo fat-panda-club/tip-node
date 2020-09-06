@@ -2,6 +2,19 @@
 
 Requires python3.7+
 
+## Task summary
+
+### Discord
+* create an audit bot user, note down CLIENT_ID
+* invite audit bot user to your server
+* invite panda-bot to your server
+* create a text channel and give access to both bots (send message and read message), this is ideally an admin channel not open to public although you can choose to be transparent. note down the channel ID
+* message panda-bot $tipnode and retrieve API key
+* set up a clean node (skip if use existing)
+* clone script and fill in the required fields with details obtain from previous steps
+* run the script!
+* if no errors, create a crontask to run the script on schedule
+
 ## Create a audit bot user to communicate with panda-bot
 
 ```
@@ -30,9 +43,6 @@ https://discordapp.com/oauth2/authorize?client_id=<CLIENT_ID>&scope=bot&permissi
 
 Instructions are taken from https://discordpy.readthedocs.io/en/latest/discord.html 
 
-## Retrieve API key from panda-bot
-
-Run $tipnode command in DM or any channel with panda-bot present, you will need to provide the Bot user CLIENT_ID
 
 ## For Discord: invite panda-bot to your server and create an audit channel
 
@@ -44,6 +54,14 @@ The audit bot user you created in the first step of this documentation will also
 
 Take note of the channel ID to use in the next step
 
+## Retrieve API key from panda-bot
+
+Run $tipnode command in DM or any channel with panda-bot present, you will need to provide the Bot user CLIENT_ID
+
+## Set up tip node 
+
+Set up your blockchain node on the same or an alternate VPS with the configuration from above steps
+Keep this node updated and DO NOT make transactions manually
 
 ## Git clone and update script
 
@@ -88,10 +106,6 @@ Trigger every 5 minutes, replace with path to python3 and script location where 
 `*/5 * * * * /usr/bin/python3 ~/tip-node/panda_tip_node.py >> ~/panda_tip_node.log 2>&1`
 
 
-## Set up tip node 
-
-Set up your blockchain node on the same or an alternate VPS with the configuration from above steps
-Keep this node updated and DO NOT make transactions manually
 
 ## Notes
 
