@@ -25,7 +25,6 @@ Invite the bot to your server by using this link, replace <CLIENT_ID> with what 
 https://discordapp.com/oauth2/authorize?client_id=<CLIENT_ID>&scope=bot&permissions=0
 
 ```
-### Please send this invite link to us as well!
 
 Instructions are taken from https://discordpy.readthedocs.io/en/latest/discord.html 
 
