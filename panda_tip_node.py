@@ -81,7 +81,7 @@ async def on_ready():
         else:
             vout = tx['vout']
         flag_conflicts = False
-        if len(tx['walletconflicts']) > 0:
+        if 'walletconflicts' in tx and len(tx['walletconflicts']) > 0:
             flag_conflicts = True
         transactions_to_submit[tx['txid']] = {
                 'conflicts': flag_conflicts,
