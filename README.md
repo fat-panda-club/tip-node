@@ -95,9 +95,10 @@ rpcuser=user
 rpcpassword=pass
 rpcport=123
 rpcallowip=1.2.3.4/32 
-
+staking=0
+mingting=0
 ```
-This IP is the host/VM which will be running the tip-node script
+This IP is the host/VM which will be running the tip-node script. If it is a PoS currency please make sure staking or minting is off!
 
 ## Create crontask 
 
