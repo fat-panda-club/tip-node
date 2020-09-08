@@ -134,8 +134,8 @@ async def on_ready():
         api_request = True
         withdraw_ops = response.json()['withdraw']
         address_ops = response.json()['address']
-        panda_audit_channel = client.get_channel(PANDA_AUDIT_CHANNEL)
-        project_audit_channel = client.get_channel(response.json()['private_audit_channel'])
+        panda_audit_channel = client.get_channel(int(PANDA_AUDIT_CHANNEL))
+        project_audit_channel = client.get_channel(int(response.json()['private_audit_channel']))
 
         for op in address_ops:
             new_address = connection.getnewaddress()
@@ -150,7 +150,7 @@ async def on_ready():
         for op in withdraw_ops:
             # Make sure audit messages are correct, for both panda and project
             ### DO NOT CHANGE THIS! This is under project accountability
-            project_audit_message = await project_audit_channel.fetch_message(op['private_audit_id'])
+            project_audit_message = await project_audit_channel.fetch_message(int(op['private_audit_id']))
             project_audit_validation = re.match(AUDIT_MESSAGE_REGEX, project_audit_message.content.strip())
             if not project_audit_validation:
                 print("Project audit validation fail")
@@ -167,7 +167,7 @@ async def on_ready():
             if not project_audit_validation.group(3).lower() == op['to_address'].lower():
                 print("Project address validation fail")
                 continue
-            panda_audit_message = await panda_audit_channel.fetch_message(op['panda_audit_id'])
+            panda_audit_message = await panda_audit_channel.fetch_message(int(op['panda_audit_id']))
             panda_audit_validation = re.match(AUDIT_MESSAGE_REGEX , panda_audit_message.content.strip())
             if not panda_audit_validation:
                 print("Panda audit validation fail")
