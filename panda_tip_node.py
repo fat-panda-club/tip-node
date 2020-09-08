@@ -6,6 +6,7 @@ import time
 import re
 import random
 import sys
+import traceback
 
 # If you do not have this, obtain one by following https://discordpy.readthedocs.io/en/latest/discord.html (no permissions required)
 # Do not share this with anyone!
@@ -33,6 +34,12 @@ AUDIT_MESSAGE_REGEX = r"^\[\ ([a-z0-9]{1,7}\-\d+)\ \].*\ withdrawn\ ([0-9]+\.[0-
 
 client = discord.Client()
 
+@client.event
+async def on_error(event, *args, **kwargs):
+    print(traceback.format_exc())
+    await client.close()
+    sys.exit(exception)
+    
 @client.event
 async def on_ready():
     # Randomize start time, do not remove or you will be rate limited!
