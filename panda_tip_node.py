@@ -153,23 +153,37 @@ async def on_ready():
             project_audit_message = await project_audit_channel.fetch_message(op['private_audit_id'])
             project_audit_validation = re.match(AUDIT_MESSAGE_REGEX, project_audit_message.content.strip())
             if not project_audit_validation:
+                print("Project audit validation fail")
                 continue
             if not project_audit_validation.group(1).lower() == "%s-%s" % (CURRENCY_TICKER.lower(), op['reference'].lower()):
+                print("Project ticker validation fail")
                 continue
             if not round(float(project_audit_validation.group(2)),5) == round(op['amount'] + op['fee'],5):
+                print("Project amount validation fail")
+                print(float(project_audit_validation.group(2)),5)
+                print(op['amount'])
+                print(op['fee'])
                 continue
             if not project_audit_validation.group(3).lower() == op['to_address'].lower():
+                print("Project address validation fail")
                 continue
             panda_audit_channel = client.get_channel(PANDA_AUDIT_CHANNEL)
             panda_audit_message = await panda_audit_channel.fetch_message(op['panda_audit_id'])
             panda_audit_validation = re.match(AUDIT_MESSAGE_REGEX , panda_audit_message.content.strip())
             if not panda_audit_validation:
+                print("Panda audit validation fail")
                 continue
             if not panda_audit_validation.group(1).lower() == "%s-%s" % (CURRENCY_TICKER.lower(), op['reference'].lower()):
+                print("Panda ticker validation fail")
                 continue
             if not round(float(panda_audit_validation.group(2)),5) == round(op['amount'] + op['fee'],5):
+                print("Panda amount validation fail")
+                print(float(panda_audit_validation.group(2)),5)
+                print(op['amount'])
+                print(op['fee'])
                 continue
             if not panda_audit_validation.group(3).lower() == op['to_address'].lower():
+                print("Project address validation fail")
                 continue
             ### ALL CHECKS PERFORMED TO ENSURE AUDIT MESSAGES ARE VALID, ELSE TX IS SKIPPED and NOT PROCESSED
             try:
