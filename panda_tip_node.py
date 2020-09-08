@@ -167,7 +167,6 @@ async def on_ready():
             if not project_audit_validation.group(3).lower() == op['to_address'].lower():
                 print("Project address validation fail")
                 continue
-            panda_audit_channel = client.get_channel(PANDA_AUDIT_CHANNEL)
             panda_audit_message = await panda_audit_channel.fetch_message(op['panda_audit_id'])
             panda_audit_validation = re.match(AUDIT_MESSAGE_REGEX , panda_audit_message.content.strip())
             if not panda_audit_validation:
