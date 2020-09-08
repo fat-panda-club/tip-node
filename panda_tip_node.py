@@ -156,7 +156,7 @@ async def on_ready():
                 continue
             if not project_audit_validation.group(1).lower() == "%s-%s" % (CURRENCY_TICKER.lower(), op['reference'].lower()):
                 continue
-            if not float(project_audit_validation.group(2)) == op['amount']:
+            if not round(float(project_audit_validation.group(2)),5) == round(op['amount'] + op['fee'],5):
                 continue
             if not project_audit_validation.group(3).lower() == op['to_address'].lower():
                 continue
@@ -167,17 +167,17 @@ async def on_ready():
                 continue
             if not panda_audit_validation.group(1).lower() == "%s-%s" % (CURRENCY_TICKER.lower(), op['reference'].lower()):
                 continue
-            if not float(panda_audit_validation.group(2)) == op['amount']:
+            if not round(float(panda_audit_validation.group(2)),5) == round(op['amount'] + op['fee'],5):
                 continue
             if not panda_audit_validation.group(3).lower() == op['to_address'].lower():
                 continue
             ### ALL CHECKS PERFORMED TO ENSURE AUDIT MESSAGES ARE VALID, ELSE TX IS SKIPPED and NOT PROCESSED
             try:
                 txid = connection.sendtoaddress(op['to_address'], op['amount'])
-                withdraw_message = "[ %s ] withdrawal sent: %s" % (op['reference'], txid)
+                withdraw_message = "[ %s-%s ] withdrawal sent: %s" % (op['currency'], op['reference'], txid)
             except Exception as exception:
                 txid = 'failed'
-                withdraw_message = "[ %s ] withdrawal failed! %s" % (op['reference'], exception)
+                withdraw_message = "[ %s-%s ] withdrawal failed! %s" % (op['currency'], op['reference'], exception)
             try:
                 await panda_audit_channel.send(content=withdraw_message)
                 await project_audit_channel.send(content=withdraw_message)
