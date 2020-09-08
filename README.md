@@ -10,7 +10,7 @@ Requires python3.7+
 * invite panda-bot to your server
 * create a text channel and give access to both bots (send message and read message), this is ideally an admin channel not open to public although you can choose to be transparent. note down the channel ID
 * message panda-bot $tipnode and retrieve API key
-* set up a clean node (skip if use existing)
+* set up a clean node (skip if use existing), ensure panda-bot is the only one accessing it
 * clone script and fill in the required fields with details obtain from previous steps
 * run the script!
 * if no errors, create a crontask to run the script on schedule
