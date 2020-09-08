@@ -61,6 +61,7 @@ Run $tipnode command in DM or any channel with panda-bot present, you will need 
 ## Set up tip node 
 
 Set up your blockchain node on the same or an alternate VPS with the configuration from above steps
+This wallet should only be used for panda-bot (explorers are fine, as there are no blockchain transactions)
 Keep this node updated and DO NOT make transactions manually
 
 ## Git clone and update script
