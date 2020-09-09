@@ -36,7 +36,6 @@ client = discord.Client()
 
 @client.event
 async def on_error(event, *args, **kwargs):
-    print(traceback.format_exc())
     await client.close()
     sys.exit("Discord Error")
     
