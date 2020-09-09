@@ -4,7 +4,7 @@ Requires python3.7+ with pip
 
 ## Task summary
 
-### Discord
+### Set up for Discord
 * create an audit bot user, note down CLIENT_ID
 * invite audit bot user to your server
 * invite panda-bot to your server
