@@ -131,13 +131,16 @@ async def on_ready():
 
     # Process operations from panda-bot
     response = requests.request("GET", url, headers=headers)
-
     if response.status_code != 200:
+        print("Could not GET wallet ops")
+        print(response.text)
         api_request_error = response.json()['message']
     elif response.status_code == 429:
         await client.close()
         sys.exit("Rate limited! Please decrease your job frequency and wait a while.")
     else:
+        print("Obained wallet ops")
+        print(response.text)
         api_request = True
         withdraw_ops = response.json()['withdraw']
         address_ops = response.json()['address']
