@@ -1,6 +1,6 @@
 # tip-node
 
-Requires python3.7+
+Requires python3.7+ with pip
 
 ## Task summary
 
