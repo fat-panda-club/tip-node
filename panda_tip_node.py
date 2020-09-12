@@ -159,47 +159,44 @@ async def on_ready():
         for op in withdraw_ops:
             # Make sure audit messages are correct, for both panda and project
             ### DO NOT CHANGE THIS! This is under project accountability
-            project_audit_message = await project_audit_channel.fetch_message(int(op['private_audit_id']))
+            project_audit_message = await project_audit_channel.fetch_message(op['private_audit_id'])
             project_audit_validation = re.match(AUDIT_MESSAGE_REGEX, project_audit_message.content.strip())
-            if not project_audit_validation:
-                print("Project audit validation fail")
-                continue
-            if not project_audit_validation.group(1).lower() == "%s-%s" % (CURRENCY_TICKER.lower(), op['reference'].lower()):
-                print("Project ticker validation fail")
-                continue
-            if not round(float(project_audit_validation.group(2)),5) == round(op['amount'] + op['fee'],5):
-                print("Project amount validation fail")
-                print(float(project_audit_validation.group(2)),5)
-                print(op['amount'])
-                print(op['fee'])
-                continue
-            if not project_audit_validation.group(3).lower() == op['to_address'].lower():
-                print("Project address validation fail")
-                continue
-            panda_audit_message = await panda_audit_channel.fetch_message(int(op['panda_audit_id']))
+            panda_audit_message = await panda_audit_channel.fetch_message(op['panda_audit_id'])
             panda_audit_validation = re.match(AUDIT_MESSAGE_REGEX , panda_audit_message.content.strip())
-            if not panda_audit_validation:
-                print("Panda audit validation fail")
-                continue
-            if not panda_audit_validation.group(1).lower() == "%s-%s" % (CURRENCY_TICKER.lower(), op['reference'].lower()):
-                print("Panda ticker validation fail")
-                continue
-            if not round(float(panda_audit_validation.group(2)),5) == round(op['amount'] + op['fee'],5):
-                print("Panda amount validation fail")
-                print(float(panda_audit_validation.group(2)),5)
-                print(op['amount'])
-                print(op['fee'])
-                continue
-            if not panda_audit_validation.group(3).lower() == op['to_address'].lower():
-                print("Project address validation fail")
-                continue
-            ### ALL CHECKS PERFORMED TO ENSURE AUDIT MESSAGES ARE VALID, ELSE TX IS SKIPPED and NOT PROCESSED
-            try:
-                txid = connection.sendtoaddress(op['to_address'], op['amount'])
-                withdraw_message = "[ %s-%s ] withdrawal sent: %s" % (op['currency'], op['reference'], txid)
-            except Exception as exception:
-                txid = 'failed'
-                withdraw_message = "[ %s-%s ] withdrawal failed! %s" % (op['currency'], op['reference'], exception)
+
+            if not project_audit_validation:
+                withdraw_message = "[ %s-%s ] project audit validation failed!" % (op['currency'], op['reference'])
+
+            elif not project_audit_validation.group(1).lower() == "%s-%s" % (CURRENCY_TICKER.lower(), op['reference'].lower()):
+                withdraw_message = "[ %s-%s ] project ticker validation failed!" % (op['currency'], op['reference'])
+
+            elif not isclose(float(project_audit_validation.group(2)), op['amount'] + op['fee'], abs_tol=1e-5):
+
+                withdraw_message = "[ %s-%s ] project amount validation failed!\n%0.4f vs %0.4f + %0.4f" % (op['currency'], op['reference'], float(project_audit_validation.group(2)), op['amount'], op['fee'] )
+
+            elif not project_audit_validation.group(3).lower() == op['to_address'].lower():
+                withdraw_message = "[ %s-%s ] project address validation failed!" % (op['currency'], op['reference'])
+
+            elif not panda_audit_validation:
+                withdraw_message = "[ %s-%s ] panda audit validation failed!" % (op['currency'], op['reference'])
+
+            elif not panda_audit_validation.group(1).lower() == "%s-%s" % (CURRENCY_TICKER.lower(), op['reference'].lower()):
+                withdraw_message = "[ %s-%s ] panda ticker validation failed!" % (op['currency'], op['reference'])
+
+            elif not isclose(float(panda_audit_validation.group(2)), op['amount'] + op['fee'], abs_tol=1e-5):
+                withdraw_message = "[ %s-%s ] panda amount validation failed!\n%0.4f vs %0.4f + %0.4f" % (op['currency'], op['reference'], float(panda_audit_validation.group(2)), op['amount'], op['fee'] )
+
+            elif not panda_audit_validation.group(3).lower() == op['to_address'].lower():
+                withdraw_message = "[ %s-%s ] panda address validation failed!" % (op['currency'], op['reference'])
+
+            else:
+                ### ALL CHECKS PERFORMED TO ENSURE AUDIT MESSAGES ARE VALID, ELSE TX IS SKIPPED and NOT PROCESSED
+                try:
+                    txid = connection.sendtoaddress(op['to_address'], op['amount'])
+                    withdraw_message = "[ %s-%s ] withdrawal sent: %s" % (op['currency'], op['reference'], txid)
+                except Exception as exception:
+                    txid = 'failed'
+                    withdraw_message = "[ %s-%s ] withdrawal failed! %s" % (op['currency'], op['reference'], exception)
             try:
                 await panda_audit_channel.send(content=withdraw_message)
                 await project_audit_channel.send(content=withdraw_message)
