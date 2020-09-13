@@ -7,6 +7,7 @@ import re
 import random
 import sys
 import traceback
+from math import isclose
 
 # If you do not have this, obtain one by following https://discordpy.readthedocs.io/en/latest/discord.html (no permissions required)
 # Do not share this with anyone!
