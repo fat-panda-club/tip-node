@@ -83,7 +83,7 @@ Insert values as follows:
 | BOT_TOKEN | The token you have retrieved in the first step
 | CURRENCY_TICKER  | The ticker of your currency registered on panda-bot  |
 | PANDA_AUDIT_CHANNEL | This you will receive as part of registering |
-| PROJECT_AUDIT_CHANNEL | This is the numeric audit channel ID created in the project Discord server |
+| BACKUP_AUDIT_CHANNEL | This is the numeric audit channel ID created in the project Discord server |
 | FAT_PANDA_CLUB_API_KEY  | panda-bot API key which you can obtain with $tipnode  |
 | TIP_NODE_HOST | IP of the live node |
 | TIP_NODE_PORT | Port number of the live node |
