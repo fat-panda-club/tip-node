@@ -28,13 +28,18 @@ Click on the “New Application” button.
 
 Give the application a name (something simple like your currency name or your-currency-name-audit) and click “Create”. 
 Note down the numeric Client ID just below the application name.
-
+```
+![Client ID](https://pandabot.fatpanda.club/img/client.png)
+```
 Create a Bot User by navigating to the “Bot” tab and clicking “Add Bot”.
 
 Click “Yes, do it!” to continue.
 
 Note down the Bot Token by clicking the "Copy" button. (Never share this)
+```
+![Bot Token](https://pandabot.fatpanda.club/img/token.png)
 
+```
 You are free to edit the name or logo for your project.
 
 No extra permissions are required.
