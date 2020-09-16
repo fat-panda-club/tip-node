@@ -15,7 +15,7 @@ Requires python3.7+ with pip
 * run the script!
 * if no errors, create a crontask to run the script on schedule
 
-## Create a audit bot user to communicate with panda-bot
+## Create an audit bot user to communicate with panda-bot
 
 ```
 Creating a Bot account is a pretty straightforward process.
