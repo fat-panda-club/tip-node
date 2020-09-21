@@ -19,7 +19,7 @@ PANDA_AUDIT_CHANNEL = 0
 BACKUP_AUDIT_CHANNEL = 0
 # This is the currency which you received API key for
 CURRENCY_TICKER = "" # eg. BOO
-# Run $infonode to retrieve the API key, you must be admin of the project
+# Run $tipnode to retrieve the API key, you must be admin of the project
 FAT_PANDA_CLUB_API_KEY = ""
 # IP of target node, 127.0.0.1 for localhost
 TIP_NODE_HOST = ""
