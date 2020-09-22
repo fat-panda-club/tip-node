@@ -31,7 +31,7 @@ TIP_NODE_RPC_PASSWORD = ""
 ### This example file is provided for basic blockchain based currencies, 
 ### other virtual currencies can utilize their own methods for deposit detection and withdrawal processing
 
-AUDIT_MESSAGE_REGEX = r"^\[\ ([a-z0-9]{1,7}\-\d+)\ \].*\ (withdrawn|staked)\ ([0-9]+\.[0-9]+?)\ via.*\ to\ ([a-zA-Z0-9_]+?)\!$"
+AUDIT_MESSAGE_REGEX = r"^\[\ ([a-z0-9]{1,7}\-\d+)\ \].*\ (?:withdrawn|staked)\ ([0-9]+\.[0-9]+?)\ via.*\ to\ ([a-zA-Z0-9_]+?)\!$"
 
 client = discord.Client()
 
