@@ -111,7 +111,7 @@ async def on_ready():
     if response.status_code == 200:
         api_submission = True
         response_json = response.json()
-        panda_audit_channel = client.get_channel(PANDA_AUDIT_CHANNEL)
+        panda_audit_channel = client.get_channel(int(PANDA_AUDIT_CHANNEL))
         project_audit_channel = client.get_channel(response_json['private_audit_channel'])
 
         print(response_json)
@@ -208,8 +208,8 @@ async def on_ready():
             response = requests.request("POST", url, headers=headers, json=op)
 
     try:
-        if BACKUP_AUDIT_CHANNEL != 0:
-            audit_channel = client.get_channel(BACKUP_AUDIT_CHANNEL)
+        if int(BACKUP_AUDIT_CHANNEL) != 0:
+            audit_channel = client.get_channel(int(BACKUP_AUDIT_CHANNEL))
             if not api_submission:
                 await audit_channel.send(content="API submission to panda-bot has failed due to: %s" % api_submission_error)
             if not api_request:
