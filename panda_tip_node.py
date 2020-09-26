@@ -25,7 +25,7 @@ FAT_PANDA_CLUB_API_KEY = ""
 TIP_NODE_HOST = ""
 # Port of info node
 TIP_NODE_PORT = ""
-# Provide RPC credentials
+# Provide RPC credentials, avoid special characters
 TIP_NODE_RPC_USERNAME = ""
 TIP_NODE_RPC_PASSWORD = ""
 ### This example file is provided for basic blockchain based currencies, 
