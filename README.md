@@ -80,6 +80,7 @@ git clone https://github.com/fat-panda-club/tip-node.git
 cd tip-node
 sudo apt-get install python3-pip -y
 sudo apt-get install python3-setuptools -y
+python3 -m pip install wheel
 python3 -m pip install -r requirements.txt
 vi panda_tip_node.py
 ```
