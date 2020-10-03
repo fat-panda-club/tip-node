@@ -8,26 +8,27 @@ import random
 import sys
 import traceback
 from math import isclose
+import os
 
 # If you do not have this, obtain one by following https://discordpy.readthedocs.io/en/latest/discord.html (no permissions required)
 # Do not share this with anyone!
-BOT_TOKEN = ""
-### Channels are currently Discord based
-# This is the panda-bot audit channel for logging all transactions
-PANDA_AUDIT_CHANNEL = 0
-# This is the project audit channel, only used on error
-BACKUP_AUDIT_CHANNEL = 0
+BOT_TOKEN = os.environ["PANDA_AUDIT_TOKEN"]
 # This is the currency which you received API key for
-CURRENCY_TICKER = "" # eg. BOO
-# Run $tipnode to retrieve the API key, you must be admin of the project
-FAT_PANDA_CLUB_API_KEY = ""
+CURRENCY_TICKER = os.environ["PANDA_CURRENCY"] # eg. BOO
+# Run $stakeonode to retrieve the API key, you must be admin of the project
+FAT_PANDA_CLUB_API_KEY = os.environ["PANDA_API_KEY"]
+# This is the panda-bot audit channel for logging all transactions
+PANDA_AUDIT_CHANNEL = os.environ["PANDA_AUDIT_CHANNEL"]
+# This is the backup audit channel, only used on error
+BACKUP_AUDIT_CHANNEL = os.environ["PANDA_BACKUP_CHANNEL"]
 # IP of target node, 127.0.0.1 for localhost
-TIP_NODE_HOST = ""
-# Port of info node
-TIP_NODE_PORT = ""
-# Provide RPC credentials, avoid special characters
-TIP_NODE_RPC_USERNAME = ""
-TIP_NODE_RPC_PASSWORD = ""
+TIP_NODE_HOST = os.environ["PANDA_TIP_HOST"]
+# Port of stake node
+TIP_NODE_PORT = os.environ["PANDA_TIP_PORT"]
+# Provide RPC credentials
+TIP_NODE_RPC_USERNAME = os.environ["PANDA_TIP_USERNAME"]
+TIP_NODE_RPC_PASSWORD = os.environ["PANDA_TIP_PASSWORD"]
+
 ### This example file is provided for basic blockchain based currencies, 
 ### other virtual currencies can utilize their own methods for deposit detection and withdrawal processing
 
