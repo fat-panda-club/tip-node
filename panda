@@ -1,0 +1,25 @@
+### This file can be saved somewhere common, ie. ~/.panda
+### Some of them may be exist already so you do not need to add them again
+
+### These are common params and should exist if you have set up tip node
+# Audit bot token, can be the same for tip and stake
+# Do not share this with anyone!
+export PANDA_AUDIT_TOKEN=''
+# This is the currency which you received API key for
+# eg. BOO
+export PANDA_CURRENCY = ''
+# Retrieved by $infonode/$tipnode/$stakenode, you must be admin of the project
+export PANDA_API_KEY=''
+# This is the panda-bot audit channel for logging all transactions
+export PANDA_AUDIT_CHANNEL=0
+
+### These are specific to tip node and can be appended
+# Backup audit channel for errors
+export PANDA_BACKUP_CHANNEL=0
+# IP of target nodes, 127.0.0.1 for localhost
+export PANDA_TIP_HOST=''
+# Port of target nodes
+export PANDA_TIP_PORT=''
+# Provide RPC credentials
+export PANDA_TIP_USERNAME=''
+export PANDA_TIP_PASSWORD=''
