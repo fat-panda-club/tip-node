@@ -26,7 +26,7 @@ Navigate to the [application page](https://discord.com/developers/applications)
 
 Click on the “New Application” button.
 
-Give the application a name (something simple like your currency name or your-currency-name-audit) and click “Create”. 
+Give the application a name (something simple like "currency-panda-audit") and click “Create”. 
 Note down the numeric Client ID just below the application name.
 ```
 ![Client ID](https://pandabot.fatpanda.club/img/client.png)
